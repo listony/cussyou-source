@@ -24,17 +24,29 @@ void ordinal_number_algorithm(int* arr, int len)
 	for(int i=0;i<=product-1;i++){
 		int n = i;
 		int r = 0;
+		r = n%2;
+		less_than[0] = r; // now less_than[i] means, how many elements right arr[i+1] ;
 		for(int p = 2; p<=len-1;p++){
 			n = n/p;
-			r = n%p;
-			less_than[p-2] = r; // now less_than[i] means, how many elements right arr[i+1] ;
+			r = n%(p+1);
+			less_than[p-1] = r; // now less_than[i] means, how many elements right arr[i+1] ;
 		}
-		std::cout<<"the ordinal array is:"<<std::endl;
+		std::cout<<"the ordinal array is:";
 		print_array(less_than, len-1);
-		// print this permutation
-		for(int j=len-2;j>=0;j--){
-			
+		// init the tmp_array;
+		for(int j = 0; j<len; j++){
+			tmp_array[j] = arr[0];
+		};
+		for(int j=len-1;j>=1;j--){
+			int p = len-1;
+			int counter = less_than[j-1] ;
+			while(counter>0){
+				if(
+			}
 		}
+		// print this permutation
+		std::cout<<"this permutation is:"<<std::endl;
+		print_array(tmp_array,len);
 	}
 
 }
